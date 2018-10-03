@@ -50,7 +50,8 @@ public class Cylinder implements ThreeDimensionalShape{
 
     @Override
     public String toString() {
-        return String.format("Radius: %.2f\nHeight: %.2f\n", this.radius, this.height);
+        return String.format("Radius: %.2f\nHeight: %.2f\nSurfaceArea: %.2f\nArea: %.2f\n",
+                this.radius, this.height, this.getArea(), this.getVolume());
     }
     
 }

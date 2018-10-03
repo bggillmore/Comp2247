@@ -1,9 +1,0 @@
-/build
-*.cmp
-*.tst
-*.out
-*.html
-*.mf
-*.xml
-/nbproject
-/test
