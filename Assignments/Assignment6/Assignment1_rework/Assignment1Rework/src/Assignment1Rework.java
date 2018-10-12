@@ -1,25 +1,18 @@
+/*
+* Author: Benjamin Gillmore
+* Date: 10/12/2018
+* Assignment: Assignment #6 Assignment1Rework.java
+* Description: Rework of assignment 1 that impliments try catch error handling.
+*/
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author su7613rx
- */
-public class COMP2247_Assignment1{
-
-    /**
-     * @param args the command line arguments
-     */
-    static final int SIZE = 40;
+public class Assignment1Rework {
+static final int SIZE = 40;
     
     public static void main(String[] args) throws IOException {
         //create array of country objects of given size (40) 
@@ -60,31 +53,61 @@ public class COMP2247_Assignment1{
         }//end while
         
         //Display menu and call functions to display info
-        boolean flag = true;
-        int userCommand;
+        boolean flag = true, exceptionFlag;
+        int userCommand = 0;
         Scanner console = new Scanner(System.in);
+        String key = "";
         
         while(flag){
-            showMenu();
-            userCommand = console.nextInt();
+            //get user input, non integer inputs handled by try-catch,
+            //non menue integers handled by default case in switch statement.
+            do{
+               exceptionFlag = false;
+               try{
+                    showMenu();
+                    userCommand = console.nextInt();
+               }
+               catch(InputMismatchException e1){
+                    exceptionFlag = true;
+                    console.next();
+                    System.out.println(e1.toString());
+                }
+                catch(Exception e){
+                    exceptionFlag = true;
+                    console.next();
+                    System.out.print(e.toString());
+                }
+            }while(exceptionFlag);
             
             switch(userCommand){
                 case 1: //output all the countries information
-                    OutputCountryInfo(countryList);
+                    outputCountryInfo(countryList);
                     break;
                 case 2: //output average gdp
-                    AverageGDP(countryList);
+                    averageGDP(countryList);
                     break;
                 case 3: //output highest gdp country name
-                    HighestGDP(countryList);
+                    highestGDP(countryList);
                     break;
                 case 4: //call search method and output its return
                     System.out.println("\nEnter a country to search: ");
-                    String key = console.next();
-                    Search(countryList, key);
+                    //get user input, exceptions handled by try catch
+                    do{
+                        try{
+                            exceptionFlag = false;
+                            key = console.next(); 
+                        }
+                        catch(Exception e){
+                            exceptionFlag = true;
+                            console.next();
+                            System.out.print(e.toString());
+                        }
+                    }while(exceptionFlag);
+                    
+                    search(countryList, key);
                     break;
                 case 5: //output each UNStatistical region
-                    StatisticalRegion(countryList);
+                    statisticalRegion(countryList);
                     break;
                 case 0:
                     flag = false;
@@ -110,7 +133,7 @@ public class COMP2247_Assignment1{
     }
     
     //output data for all countrys output properly
-    private static void OutputCountryInfo(Country[] countryList){
+    private static void outputCountryInfo(Country[] countryList){
         System.out.printf("%-25s %-20s %-20s %-20s %-20s %-20s\n", 
                 "Name", "Continental Region", "Statistical Region", "Population", "GDP (Millions)", "GDP Per Capita");
         for(Country country:countryList){
@@ -119,7 +142,7 @@ public class COMP2247_Assignment1{
     }
     
     //
-    private static void AverageGDP(Country[] countryList) {
+    private static void averageGDP(Country[] countryList) {
         double gdpTotal = 0;
         for(Country country: countryList){
             gdpTotal += country.getGdp();
@@ -128,10 +151,10 @@ public class COMP2247_Assignment1{
     }
     
     //
-    private static void HighestGDP(Country[] countryList){
+    private static void highestGDP(Country[] countryList){
         Country highestGDP = new Country();
         for(Country country : countryList){
-            if(highestGDP.getGdp() < country.getGdp()){
+            if(highestGDP.gdpPerCapita() < country.gdpPerCapita()){
                 highestGDP = country;
             }
         }
@@ -140,8 +163,8 @@ public class COMP2247_Assignment1{
         System.out.println(highestGDP.toString());
     }
     
-    //
-    private static void Search(Country[] countryList, String key){
+    //searches through the countries in country list and returns any match.
+    private static void search(Country[] countryList, String key){
         for(Country country : countryList){
             if(country.getCountryName().equals(key)){
                 System.out.printf("%-25s %-20s %-20s %-20s %-20s %-20s \n", 
@@ -175,7 +198,7 @@ public class COMP2247_Assignment1{
         }
     }
     //itterate through countries and add data to enums accordingly
-    private static void StatisticalRegion(Country[] countryList) {
+    private static void statisticalRegion(Country[] countryList) {
         for(Country country: countryList){
             switch(country.getUNStatisticalRegion()){
             case "Northern_Europe":
@@ -200,7 +223,8 @@ public class COMP2247_Assignment1{
         for(Region region : regionList){
             System.out.println(region.name() + ":");
             System.out.println(region.countriesInRegion);
-            System.out.println(region.numberInRegion + " countries\n5");
+            System.out.println(region.numberInRegion + " countries\n");
         }
     }
 }
+

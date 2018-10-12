@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 
-/**
- *
- * @author su7613rx
- */
+
 public class Country {
     //data members
     private String countryName, UNContinentalRegion, UNStatisticalRegion;
@@ -70,6 +67,9 @@ public class Country {
     
     //method for gdp per capita
     public double gdpPerCapita(){
+        if(this.population ==0){
+            return 0;
+        }
         return (double)this.gdp * 1000000 / this.population;
     }
     
