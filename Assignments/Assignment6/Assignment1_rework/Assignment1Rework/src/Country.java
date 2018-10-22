@@ -1,8 +1,8 @@
 /*
 * Author: Benjamin Gillmore
-* Date: 10/12/2018
-* Assignment: Assignment #6 Countrry.java
-* Description: country class for assignment1 or assignment1Rework
+* Date: 10/22/2018
+* Assignment: Assignment #8 Countrry.java
+* Description: country class for assignment1 or assignment1Rework #2
 */
 
 

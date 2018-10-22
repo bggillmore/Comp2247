@@ -6,7 +6,8 @@ import java.util.Scanner;
 * Author: Benjamin Gillmore
 * Date: Oct 15, 2018
 * Assignment: Assignment7_Part1
-* Description: 
+* Description: First asks user to enter two numbers and finds the product of them recursevly.
+* Then asks the user for 1 number and returns the sum off all the numbers from 1 - n recursevly.
 */
 interface Product{
     int run(int n, int r);
@@ -67,7 +68,7 @@ public class Assignment7_Part1 {
                 userInt1, sum.run(userInt1)));
         
     }
-    //recursive lambda expressions
+    //recursive lambda expressions to find product (n * r) and sum (1 - n)
     static final Product product = (n,r) ->
     {
         return r==0 ? 0 : n + Assignment7_Part1.product.run(n, r-1);
@@ -78,7 +79,7 @@ public class Assignment7_Part1 {
         return n==1 ? 1 : n + Assignment7_Part1.sum.run(n - 1);
     };
 
-    //regular recursive functions
+    //regular recursive functions to find product (n * r) and sum (1 - n)
     /*
     public static int product(int int1, int int2){
         if(int2 == 0){
