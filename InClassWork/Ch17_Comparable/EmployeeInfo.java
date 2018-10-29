@@ -6,7 +6,7 @@ how to make objects comparable
 
 
 */
-public class EmployeeInfo
+public class EmployeeInfo implements Comparable<EmployeeInfo>
 {
 	 private int id;
 	 private String firstName;

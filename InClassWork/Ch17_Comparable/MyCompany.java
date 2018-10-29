@@ -55,15 +55,28 @@ public class MyCompany
 					  break;
 					  				
 				 case 2:   
-					  
+					  //call quick sort
+                 SortingMethods.quickSort(all, 0, all.length -1);
 					 
-					  					  
+                 System.out.println("The array is sorted");
 				     break;
 
              case 3:  
+                 System.out.print("Enter a first name to search: ");
+                 fName = console.next();
+					  System.out.print("Enter a last name to search: ");
+                 lName = console.next();
+                 Comparable key = new EmployeeInfo(0, fName, lName, 0.0);
+                 
+                 int foundIndex = SearchingMethods.binarySearch(all, 0, all.length -1, key);		  
 					  
-					  
-					  
+                 if(foundIndex != -1){
+                     System.out.println(all[foundIndex]);
+                 }
+                 else{
+                     System.out.println("Not Found!");
+                 }
+                 
 				     break;
 
 				 case 0:

@@ -2,7 +2,8 @@
 * Author: Benjamin Gillmore
 * Date: 10/22/2018
 * Assignment: Assignment #8 Assignment1Rework.java
-* Description: This is the second Rework of assignment 1 that impliments new searching and sorting algoritms.
+* Description: This is the second Rework of assignment 1 that impliments new 
+* searching and sorting algoritms.
 */
 
 import java.io.FileReader;
