@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,6 +16,8 @@
 public class LinkedList {
 
     public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+        
         MyLinkedList<String> airportList = new MyLinkedList<String>();
         
         airportList.addFirst("MSP");
@@ -38,6 +43,14 @@ public class LinkedList {
         System.out.println("removed value: " + airportList.removeSecondNode());
         System.out.println(airportList.traverse());
         
+        System.out.print("Enter item to search: ");
+        String key = console.next();
+        if(airportList.search(key)){
+            System.out.print(key + " is in the linked list");
+        }
+        else{
+            System.out.print(key + " is not in the linked list");
+        }
     }
 
 }

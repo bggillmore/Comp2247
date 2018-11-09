@@ -6,12 +6,10 @@
 
 /*
 * Author: Benjamin Gillmore
-* Date: Oct 31, 2018
+* Date: Nov 9, 2018
 * Assignment: MyLinkedList
 * Description: 
 */
-
-//<E extends Comparable> E is a generic comparable object
 public class MyLinkedList<E extends Comparable> {
 
     //data members
@@ -96,7 +94,7 @@ public class MyLinkedList<E extends Comparable> {
         }
         
         for(int i = 0; i < size; i++){
-            if(node.getElement().equals(key)){
+            if(node.getElement().compareTo(key) == 0){
                 return true;
             }
             node = node.getNext();
@@ -133,24 +131,6 @@ public class MyLinkedList<E extends Comparable> {
             tempHead = tempHead.getNext();
             tempHeadNext = tempHead.getNext();
         }
-    }
-    
-    //Assumes there is 2 or more elements
-    public void addSecondNode(E element){
-        Node<E> node = new Node(element, null);
-        node.setNext(head.getNext());
-        head.setNext(node);
-        size++;
-    }
-    
-    //Assumes there is 2 or more elements
-    public E removeSecondNode(){
-        Node<E> headNext = head.getNext();
-        head.setNext(headNext.getNext());
-        size--;
-        E element = headNext.getElement();
-        headNext = null;
-        return element;
     }
     
     public String traverse() throws EmptyListException{
