@@ -8,7 +8,7 @@
 * Author: Benjamin Gillmore
 * Date: Nov 9, 2018
 * Assignment: Node
-* Description: 
+* Description: defines the nodes for MyLinkedList class. Nodes are generic so anything can be put into it.
 */
 public class Node <E>{
     //data members

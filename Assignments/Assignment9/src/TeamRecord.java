@@ -8,7 +8,7 @@
 * Author: Benjamin Gillmore
 * Date: Nov 9, 2018
 * Assignment: TeamRecord
-* Description: 
+* Description: Defines the TeamRecord class intended for a linked list
 */
 public class TeamRecord implements Comparable<TeamRecord>{
     String teamName;

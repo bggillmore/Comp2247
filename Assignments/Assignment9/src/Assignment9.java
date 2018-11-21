@@ -6,7 +6,7 @@ import java.util.Scanner;
 * Author: Benjamin Gillmore
 * Date: Nov 9, 2018
 * Assignment: Assignment9
-* Description: 
+* Description: Text driven menue for a linked list of team records
 */
 public class Assignment9 {
 
@@ -20,7 +20,8 @@ public class Assignment9 {
         String userInputString1;
         
         while(running){
-            
+            //resetting userInputInt to 0 to signify completeion of menu selection
+            //if not completed userInputInt is not reset and goes back to orignal selection
             if(userInputInt == 0){
                 System.out.println("\n1 ------- Add First (create a new TeamRecord object and add it to the head of the linked list)");
                 System.out.println("2 ------- Remove First (remove and return the first object, then print it)");
@@ -72,7 +73,6 @@ public class Assignment9 {
                     try{
                         System.out.print(teamRecordList.removeFirst().toString() + 
                                 " is removed from the list.\n");
-                        userInputInt = 0;
                     }
                     catch(EmptyListException e1){
                         System.out.print("List is Empty, enter data first.\n");
@@ -80,6 +80,9 @@ public class Assignment9 {
                     }
                     catch(Exception e){
                         System.out.print(e.toString());
+                    }
+                    finally{
+                        userInputInt = 0;
                     }
                     break;
                 case 3:
@@ -110,7 +113,6 @@ public class Assignment9 {
                 case 4:
                     try{
                         System.out.print(teamRecordList.traverse());
-                        userInputInt = 0;
                     }
                     catch(EmptyListException e1){
                         System.out.print("List is Empty, enter data first.\n");
@@ -118,6 +120,9 @@ public class Assignment9 {
                     }
                     catch(Exception e){
                         System.out.print(e.toString());
+                    }
+                    finally{
+                        userInputInt = 0;
                     }
                     break;
                     
@@ -132,7 +137,6 @@ public class Assignment9 {
                         else{
                             System.out.print(userInputString1 + " is not in the list.");
                         }
-                        userInputInt = 0;
                     }
                     catch(InputMismatchException e1){
                         System.out.print("Enter valid data. " + e1.toString() + "\n");
@@ -141,12 +145,14 @@ public class Assignment9 {
                     catch(Exception e){
                         System.out.print(e.toString());
                     }
+                    finally{
+                        userInputInt = 0;
+                    }
                     break;
                 case 6:
                     try{
                         teamRecordList.selectionSort();
                         System.out.print("List is sorted.\n");
-                        userInputInt = 0;
                     }
                     catch(EmptyListException e1){
                         System.out.print("List is Empty, enter data first.\n");
@@ -154,6 +160,9 @@ public class Assignment9 {
                     }
                     catch(Exception e){
                         System.out.print(e.toString());
+                    }
+                    finally{
+                        userInputInt = 0;
                     }
                     break;
                 case 0:
